@@ -3,19 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>新经资讯后台管理</title>
-	<link rel="stylesheet" type="text/css" href="../css/reset.css">
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
-	<link rel="stylesheet" href="../css/jquery.pagination.css">
-	<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.pagination.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../static/admin/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../../static/admin/css/main.css">
+	<link rel="stylesheet" href="../../static/admin/css/jquery.pagination.css">
+	<script type="text/javascript" src="../../static/admin/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="../../static/admin/js/jquery.pagination.min.js"></script>
 </head>
 <body>
 	<div class="breadcrub">
 			当前位置：新闻管理>新闻审核
-			<form class="news_filter_form">
-				<input type="text" placeholder="请输入关键字" class="input_txt">
-				<input type="submit" value="搜 索" class="input_sub">
-			</form>
+{#			<form class="news_filter_form">#}
+{#				<input type="text" placeholder="请输入关键字" class="input_txt">#}
+{#				<input type="submit" value="搜 索" class="input_sub">#}
+{#			</form>#}
+
+        <form class="news_filter_form">
+    <input name="keywords" type="text" placeholder="请输入关键字" class="input_txt">
+    <input type="submit" value="搜 索" class="input_sub">
+     </form>
+
 		</div>
 
 		<div class="pannel">
@@ -39,10 +45,17 @@
                 {% else %}
                     未审核
                 {% endif %}</td>
-                <td>
-                    <a href="{{ url_for("admin.news_review_detail", news_id=news.id) }}" class="review">审核</a>
-                </td>
-            </tr>
+{#                <td>#}
+{#                    <a href="{{ url_for("admin.news_review", news_id=news.id) }}" class="review">审核</a>#}
+{#                </td>#}
+<td>
+    <a href="{{ url_for('admin.news_review_detail') }}?news_id={{ news.id }}" class="review">审核</a>
+</td>            </tr>
+
+            <td>
+    <a href="{{ url_for('admin.news_edit_detail') }}?news_id={{ news.id }}" class="edit">编辑</a>
+</td>
+
         {% endfor %}
     </table>
 </div>
@@ -51,10 +64,7 @@
     <div id="pagination" class="page"></div>
 </div>
 
-    <form class="news_filter_form">
-    <input name="keywords" type="text" placeholder="请输入关键字" class="input_txt">
-    <input type="submit" value="搜 索" class="input_sub">
-</form>
+
 
 <script>
     $(function () {

@@ -2,6 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% extends 'news/../../../templates/base.html' %}
+
+{% block titleBlock %}
+    文章详情页
+{% endblock %}
+
+{% block scriptBlock %}
+    <script type="text/javascript" src="../../static/news/js/detail.js"></script>
+{% endblock %}
+
+{% block categoryblock %}
+
+{% endblock %}
+
+{% block contentblock %}
+    <div class="detail_con fl">
+       ...
+    </div>
+
+{% endblock %}
+
+{% block authorblock %}
+    <div class="author_card">
+        ...
+    </div>
+{% endblock %}
+
     <title>文章详情页</title>
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
